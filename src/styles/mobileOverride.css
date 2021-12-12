@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+@media (max-width: 765px), (orientation: portrait)  {
+
+   :root {
+     
+    --header-height: 0px;
+    --header-padding: 5px;
+    --header-display: none;
+
+    
+    --window-transparency: 1;
+    --window-border-radius: 0px;
+    --window-border: 0px;
+   }
+
+  header {
+      width: 100%;
+      z-index: 5;
+      left: 0%;
+      transition: var(--transition-time);
+  }
+
+  header .serverContent {
+      zoom: 1;
+  }
+
+  body.hideNav #controlPanel header {
+      left: -100%;
+  }
+
+  body #controlPanel content {
+      width: 100%;
+      left: 0;
+  }
+
+  content .channelHeader > i.navBtn {
+      display: inline-block;
+      margin-right: 15px;
+  }
+
+  .card {
+      max-width: 100%;
+  }
+
+  aside {
+      width: 100%;
+  }
+
+  aside .header > i {
+      display: inline-block;
+  }
+}

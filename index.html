@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Control Panel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!--<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />-->
+    <link href="./src/styles/appFramework.css" rel="stylesheet" type="text/css" />
+    <link href="./src/styles/appDefault.css" rel="stylesheet" type="text/css" />
+    <link href="./src/styles/mobileOverride.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body class="hideNav">
+		<div class="windowTitle" ondblclick="console.log(1);">
+			<div class="windowTitleText centerizeVertically" ondblclick="console.log(2);"></div>
+			<div class="dragableHeader centerizeVertically" ondblclick="console.log(3);"></div>
+			<div class="centerizeHorizontally windowBtns">
+				<!--<div class="minBtn"></div>
+				<div class="maxBtn"></div>-->
+				<div class="closeBtn" onClick="window.close();"></div>
+			</div>
+		</div>
+    <div id="loginModule" class="fillScreen">
+			<div class="loginArt fillScreen">
+				<div class="circle1 fillScreen"></div>
+				<!--<div class="circle2 fillScreen"></div>-->
+				<div class="circle3 fillScreen"></div>
+				<div class="circle4 fillScreen"></div>
+			</div>
+			<div class="loginFormContainer fillScreen centerizeVertically">
+				<h2>Login</h2>
+				<form id="loginForm" class="introduceByCreds centerizeVertically" onsubmit="return App.LoginWindow.onFormSubmit(event);">
+					<div class="dynamicInput centerizeHorizontally">
+						<input name="username" type="text" placeholder="Username" required />
+						<div class="edit"></div>
+					</div>
+					<div class="dynamicInput centerizeHorizontally">
+						<input name="password" type="password" placeholder="Password" required />
+						<div class="edit"></div>
+					</div>
+					<div class="dynamicInput centerizeVertically hide">
+						<br />
+						<span class="centerizeVertically">Check ur email</span>
+						<div class="centerizeHorizontally">
+							<input name="verificationCode" type="text" placeholder="Verification Code" />
+						</div>
+						<div class="edit"></div>
+					</div>
+					<input type="submit" value="Submit" />
+				</form>
+			</form>
+			</div>
+    </div>
+    <div id="controlPanel" class="fillScreen">
+      <nav class="useHiddenScrollBar">
+        <a href="javascript:alert('Feature in development');"></a>
+        <hr />
+        <div id="serverElemList">
+          <a href="#" id="server_nul" class="active"><i class="fas fa-cloud"></i></a>
+        </div>
+        <a id="addRemServer" href="javascript:alert('Feature in development');"></a>
+      </nav>
+      <header>
+        <div class="serverHeader" id="headerServerName">Kaveman</div>
+        <div class="serverContent useScrollBar" id="headerBrowseServer"></div>
+      </header>
+      <content>
+        <div class="channelHeader">
+          <i class="navBtn fas fa-bars" onClick="document.body.classList.remove('hideNav');""></i>
+          <i class="channelIcon"></i><span class="channelName"></span>
+          <!--<div id="savedChannelToggle" onClick="this.classList.toggle('isChecked');">
+            <i class="far fa-star"></i>
+            <i class="checkmark fas fa-star"></i>
+          </div>-->
+          <div class="rightSide centerizeHorizontally">
+            <div class="notifCount" onClick="document.body.classList.toggle('openNotifs');">5</div>
+            <!--<form class="searchField">
+              <table>
+                <tr>
+                  <td>
+                    <input type="text" name="query" placeholder="Search..." />
+                  </td>
+                  <td>
+                    <button type="submit">
+                      <i class="fas fa-search"></i>
+                    </button>
+                  </td>
+                </tr>
+              </table>
+            </form>
+            <i class="far fa-bell centerizeHorizontally"></i>-->
+            <i class="fas fa-ellipsis-v centerizeHorizontally" onClick="document.querySelector('.headerMenu').classList.toggle('show');"></i>
+          </div>
+          <div class="headerMenu centerizeVertically">
+            <a href="#">Profile</a>
+            <a href="#">Settings</a>
+            <a href="#" style="color: red;">Logout</a>
+          </div>
+        </div>
+        <div class="channelContent useScrollBar" onLoad="setInterval(App.UI.content.chatWindow.updateScrollFunc, 500);">
+          <div class="announcements">
+            <!--<div class="announceWarning" onclick="this.remove();"><i class="fas fa-bullhorn" aria-hidden="true"></i><strong>Hello World!</strong> 
+              This project was built with Node.js <span id="node-version"></span>,
+              Chromium <span id="chrome-version"></span>,
+              and Electron <span id="electron-version"></span>.
+            </div>-->
+              <div class="announceWarning" onclick="this.remove();"><i class="fas fa-bullhorn" aria-hidden="true"></i><strong>Maintainance Inbound!</strong> Some features may not work properly</div>
+          </div>
+          <div class="EntrancePage centerize CPPanel show"><div></div><span></span></div>
+          <div class="ModuleUnloadedWarn centerize"><div></div><span></span></div>
+          <div id="OverviewPanel" class="CPPanel">
+            <h3 style="margin-top: 0;">System</h3>
+            <div class="clearfix cardBox">
+              <div class="card">
+                <div class="head"><i class="far fa-hdd lightBlue" aria-hidden="true"></i>Resources</div>
+                <div>
+                  <p>
+                    Resource Usage for the past hour
+                   <br />
+                    Peak CPU Usage: 0.10% (3.41 GHz)
+                   <br />
+                    Peak RAM Allocation: 14 Mb / 8192 Mb
+                   <br />
+                    Disk Space: 241.00 Mb of 500.00 Mb used
+                  </p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="head"><i class="fas fa-ethernet green" aria-hidden="true"></i>Network</div>
+                <div>
+                  <p>
+                    HTTP Endpoint: Online
+                    (<a href="javascript:alert('Not Supported')">Stop</a>)
+                  <br />
+                    Node Endpoint: Locked
+                    (<a href="javascript:alert('Not Supported')">Unlock</a>)
+                  <br />
+                    App Endpoint: Locked
+                    (<a href="javascript:alert('Not Supported')">Unlock</a>)
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="SystemStatusPanel" class="CPPanel">
+            <h3 style="margin-top: 0;">Local System Resources</h3>
+            <div class="clearfix cardBox">
+              <div class="card">
+                <div class="head"><i class="fas fa-microchip lightBlue" aria-hidden="true"></i>CPU</div>
+                <div style="width: 100%; height: 100%; padding: 0;">
+                  <canvas id="processorGraph" style="width: 100%; height: 100%; padding: 0;"></canvas>
+                </div>
+              </div>
+              <div class="card">
+                <div class="head"><i class="fas fa-memory orange" aria-hidden="true"></i>Memory</div>
+                <div style="width: 100%; height: 100%; padding: 0;">
+                  <canvas id="memoryGraph" style="width: 100%; height: 100%; padding: 0;"></canvas>
+                </div>
+              </div>
+              <div class="card">
+                <div class="head"><i class="far fa-hdd lightBlue" aria-hidden="true"></i>Disk Usage</div>
+                <div>
+                  269.00 Mb available out of 500.00 Mb
+                  <div class="progressBar"><div style="transform: translateX(-50%);"></div></div>
+                </div>
+              </div>
+            </div>
+            <h3>Network Endpoints</h3>
+            <div class="clearfix cardBox" style="margin-top: 15px;">
+              <div class="card">
+                <div class="head">
+                  <i class="far fa-globe lightBlue"></i>Web Endpoint
+                </div>
+                <div>
+                  <p>
+                    Port Status: Online
+                    (<a href="javascript:alert('Not Supported')">Stop</a>)
+                  </p>
+                  <p>Active Connections: 1</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="head">
+                  <i class="fas fa-project-diagram orange"></i></i>Regional Nodes
+                </div>
+                <div>
+                  <p>
+                    Port Status: Locked
+                    (<a href="javascript:alert('Not Supported')">Unlock</a>)
+                  </p>
+                  <p>Active Connections: 0</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="head">
+                  <i class="fas fa-network-wired green"></i>App Endpoint
+                </div>
+                <div>
+                  <p>
+                    Port Status: Locked
+                    (<a href="javascript:alert('Not Supported')">Unlock</a>)
+                  </p>
+                  <p>Active Connections: 0</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          <div id="AuditLogPanel" class="CPPanel">
+            Going to show network activity of all servers requests, responses and broadcasts (and also database modifications)
+          </div>
+          <div id="OnboardGSPanel" class="CPPanel"></div>
+          <div id="AnalyticsPanel" class="CPPanel"></div>
+
+          <div id="ConfigPanel" class="CPPanel"></div>
+          <div id="UserManagementPanel" class="CPPanel"></div>
+          <div id="ServerManagementPanel" class="CPPanel"></div>
+          <div id="TerminalPanel" class="CPPanel"></div>
+          <div id="SystemLogsPanel" class="CPPanel"></div>
+        </div>
+        <form class="channelInput" onsubmit="App.InvokeSend(this); return false;">
+          <table>
+            <tr>
+              <td class="attachBtn">
+                <input id="attachment" type="file" name="attachment" hidden />
+                <label for="attachment"></label>
+                <div class="detachFileBtn disabled">
+                  <div class="dot"></div>
+                </div>
+              </td>
+              <!--<td><i class="fas fa-microphone"></i></td>-->
+              <td class="inputField">
+                <div>
+                  <textarea name="msg" class="useScrollBar" placeholder="You do not have permission to send messages here" disabled></textarea>
+                </div>
+              </td>
+              <td class="addEmojiBtn"></td>
+            </tr>
+          </table>
+        </form>
+      </content>
+      <aside>
+        <div class="header"><i class="far fa-arrow-left" onClick="document.body.classList.remove('openNotifs');"></i>Notifications</div>
+        <div id="notifsList" class="content useScrollBar">
+          <div class="notif">
+            <div>
+              <h4>Title</h4>
+              <p>content</p>
+            </div>
+          </div>
+          <div class="notif info">
+            <div>
+              <h4>Info</h4>
+              <p>content</p>
+            </div>
+          </div>
+          <div class="notif warn">
+            <div>
+              <h4>Warning</h4>
+              <p>content</p>
+            </div>
+          </div>
+          <div class="notif error">
+            <div>
+              <h4>Error</h4>
+              <p>content</p>
+            </div>
+          </div>
+          <div class="notif success">
+            <div>
+              <h4>Success</h4>
+              <p>content</p>
+            </div>
+          </div>
+        </div>
+      </aside>
+      <div class="fillScreen borderOverlay"></div>
+    </div>
+    <button style="position: fixed; bottom: 10px; right: 10px; z-index: 101;" onClick="document.body.classList.toggle('login');">Toggle</button>
+    <script src="https://kit.fontawesome.com/2a33003987.js" crossorigin="anonymous"></script>
+    <script src="./src/scripts/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+    <script src="./src/scripts/sampleDatasets.js"></script>
+	</body>
+</html>
